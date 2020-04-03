@@ -6,10 +6,24 @@ public class CollisionController : MonoBehaviour
 {
     //Allows for the object with the Camera Shake script to be added to be able to access it here.
     public CameraShake cameraShake;
-    // Start is called before the first frame update
+
+    //Sounds
+    private AudioManager audioManager;
+
+    public string FridgeInteract = "FridgeInteract";
+
+
+
     void Start()
     {
-        
+        //caching. Just in case AudioManager happens to be missing from the scene
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("FREAK OUT! No AudioManager found in the scene.");
+        }
+
+
     }
 
     // Update is called once per frame
@@ -26,6 +40,19 @@ public class CollisionController : MonoBehaviour
         {
             //The two variables here allow for editing of the magnitude as well as the duration of the shake
             cameraShake.ScreenShake(.9f, 3.8f);
+        }
+
+        if (other.gameObject.tag == "food")
+        {
+            audioManager.PlaySound(FridgeInteract);
+        }
+    }
+
+     void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "food")
+        {
+            audioManager.StopSound(FridgeInteract);
         }
     }
 }
