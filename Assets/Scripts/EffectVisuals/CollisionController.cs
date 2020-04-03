@@ -9,8 +9,8 @@ public class CollisionController : MonoBehaviour
 
     //Sounds
     private AudioManager audioManager;
-
     public string FridgeInteract = "FridgeInteract";
+    public string GameController = "GameController";
 
 
 
@@ -46,6 +46,10 @@ public class CollisionController : MonoBehaviour
         {
             audioManager.PlaySound(FridgeInteract);
         }
+        if (other.gameObject.tag == "action")
+        {
+            audioManager.PlaySound(GameController);
+        }
     }
 
      void OnTriggerExit(Collider other)
@@ -53,6 +57,11 @@ public class CollisionController : MonoBehaviour
         if (other.gameObject.tag == "food")
         {
             audioManager.StopSound(FridgeInteract);
+        }
+
+        if (other.gameObject.tag == "action")
+        {
+            audioManager.StopSound(GameController);
         }
     }
 }

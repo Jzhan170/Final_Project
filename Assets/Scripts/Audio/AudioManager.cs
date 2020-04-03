@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
             sounds[i].SetSource(_go.AddComponent<AudioSource>());
         }
 
-        PlaySound("Background Noise");
+        
 
     }
 
