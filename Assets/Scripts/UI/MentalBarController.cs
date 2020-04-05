@@ -13,7 +13,7 @@ public class MentalBarController : MonoBehaviour
     public Image mentalBar;
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
-    public GameObject dayLight, dark, distort;
+    public GameObject dayLight, daySounds, dark, playerDarkLight, darkSounds, distort;
     public CameraShake cameraShake;
     public float cameraShakeGap;
 
@@ -54,13 +54,20 @@ public class MentalBarController : MonoBehaviour
         {
             belowHalf = true;
             dayLight.SetActive(false);
+            daySounds.SetActive(false);
             dark.SetActive(true);
+            darkSounds.SetActive(true);
+            playerDarkLight.SetActive(true);
+
         }
         else
         {
             belowHalf = false;
             dayLight.SetActive(true);
+            daySounds.SetActive(true);
             dark.SetActive(false);
+            darkSounds.SetActive(false);
+            playerDarkLight.SetActive(false);
         }
         if (mentalBar.fillAmount <= .25f)
         {
@@ -86,7 +93,7 @@ public class MentalBarController : MonoBehaviour
         //if new behaviors are done and the player has done over four behaviors, detect if the behaviors are done repeatitively. if so, reduce mental bar
         if (newLength > oldLength && newLength >= 4)
         {
-            //if player do one thing repeatitively (e.g. eat eat eat)
+            //if player do one thing repetitively (e.g. eat eat eat)
             if (ActionOrder[newLength-1] == ActionOrder[newLength - 2])
             {
                 mentalBar.fillAmount -= reduceAmount / 100;
