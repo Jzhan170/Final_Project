@@ -1938,6 +1938,30 @@ MonoBehaviour:
     randomPitch: 0.1
     loop: 0
     source: {fileID: 0}
+  - name: BottleShatter
+    clip: {fileID: 8300000, guid: 5b07af93f42be1e499e88b17a75d266e, type: 3}
+    volume: 1
+    pitch: 1.036
+    randomVolume: 0.1
+    randomPitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: RGlassShatter
+    clip: {fileID: 8300000, guid: 52df2cfb931aca447a828b3010801a0c, type: 3}
+    volume: 1
+    pitch: 1.036
+    randomVolume: 0.1
+    randomPitch: 0.1
+    loop: 0
+    source: {fileID: 0}
+  - name: GlasshShatter
+    clip: {fileID: 8300000, guid: f3fd1838d5f119646ab8a6226d090173, type: 3}
+    volume: 1
+    pitch: 1.036
+    randomVolume: 0.1
+    randomPitch: 0.1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &776261055
 Transform:
   m_ObjectHideFlags: 0
