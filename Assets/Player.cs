@@ -12,20 +12,20 @@ public class Player : MonoBehaviour
 
     public Image FoodBar;
     public float startFood = 100;
-    public float Food;
+    public static float Food;
     public float HungerPerSec = 1;
     public float foodrecoverAmount = 20;
 
     public Image SMNBar;
     public float startSMN = 100;
-    public float SMN;
+    public static float SMN;
     public float SMNLost = 25;
     public float SMNGainRest = 25;
     public float SMNGainEat = 10;
 
     public Image HealthBar;
     public float startHealth = 100;
-    public float Health;
+    public static float Health;
     public float HealthrecoverAmount = 10;
     //public float HealthMinus = 10;
     public float BadHealth = 10;
@@ -56,6 +56,11 @@ public class Player : MonoBehaviour
 
         Food -= Time.deltaTime * HungerPerSec;
         FoodBar.fillAmount = Food / startFood;
+
+        //clamp the floats between 0 and 100
+        Food = Mathf.Clamp(Food, 0, 100);
+        SMN = Mathf.Clamp(SMN, 0, 100);
+        Health = Mathf.Clamp(Health, 0, 100);
 
         //Health -= Time.deltaTime * BadHealthPerSec;
         //HealthBar.fillAmount = Health / startHealth;
