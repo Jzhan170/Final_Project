@@ -71,6 +71,8 @@ public class Player : MonoBehaviour
             Debug.Log("eating");
             Health -= BadHealth;
             HealthBar.fillAmount = Health / startHealth;
+            //add food behavior to the actions
+            MentalBarController.ActionOrder += "f";
         }
 
         if(other.gameObject.tag == "action")
@@ -81,6 +83,8 @@ public class Player : MonoBehaviour
             Health += HealthrecoverAmount;
             HealthBar.fillAmount = Health;
             Debug.Log("acting");
+            //add action behavior to the actions
+            MentalBarController.ActionOrder += "a";
         }
 
         if(other.gameObject.tag == "rest")
@@ -88,6 +92,8 @@ public class Player : MonoBehaviour
             SMN += SMNGainRest;
             SMNBar.fillAmount = SMN;
             Debug.Log("sleep");
+            //add rest behavior to the actions
+            MentalBarController.ActionOrder += "r";
         }
     }
 }
