@@ -13,18 +13,32 @@ public class MentalBarController : MonoBehaviour
     public Image mentalBar;
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
+    public GameObject dayLight, dark, distort;
+    public CameraShake cameraShake;
+    public float cameraShakeGap;
 
     [SerializeField]
     int oldLength, newLength;
     float hungryTimer = 0;
     float staminaTimer = 0;
     float healthTimer = 0;
+    bool shake = false;
 
     // Start is called before the first frame update
     void Start()
     {
         ActionOrder = "";
         oldLength = 0;
+        InvokeRepeating("Shake", 0, cameraShakeGap);
+    }
+
+    void Shake()
+    {
+        if (shake)
+        {
+            //The two variables here allow for editing of the magnitude as well as the duration of the shake
+            cameraShake.ScreenShake(.9f, 3.8f);
+        }
     }
 
     // Update is called once per frame
@@ -39,26 +53,34 @@ public class MentalBarController : MonoBehaviour
         if (mentalBar.fillAmount <= .5f)
         {
             belowHalf = true;
+            dayLight.SetActive(false);
+            dark.SetActive(true);
         }
         else
         {
             belowHalf = false;
+            dayLight.SetActive(true);
+            dark.SetActive(false);
         }
         if (mentalBar.fillAmount <= .25f)
         {
             belowQuater = true;
+            shake = true;
         }
         else
         {
             belowQuater = false;
+            shake = false;
         }
         if (mentalBar.fillAmount == 0)
         {
             isZero = true;
+            distort.SetActive(true);
         }
         else
         {
             isZero = false;
+            distort.SetActive(false);
         }
 
         //if new behaviors are done and the player has done over four behaviors, detect if the behaviors are done repeatitively. if so, reduce mental bar
