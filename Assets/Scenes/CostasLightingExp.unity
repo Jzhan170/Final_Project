@@ -789,6 +789,11 @@ MonoBehaviour:
   hungryTime: 10
   staminaTime: 5
   healthTime: 5
+  dayLight: {fileID: 430527469}
+  dark: {fileID: 432146286}
+  distort: {fileID: 1647267403}
+  cameraShake: {fileID: 1034222214}
+  cameraShakeGap: 10
   oldLength: 0
   newLength: 0
 --- !u!4 &554621900
@@ -2264,7 +2269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1061900298
 BoxCollider:
   m_ObjectHideFlags: 0
