@@ -31,6 +31,13 @@ public class Player : MonoBehaviour
     public float BadHealth = 10;
 
 
+    Transform fridge, bed, pc;
+    //whether the character is in auto route finding mode
+    bool auto = true;
+    //whether the character is running the route finding coroutine
+    bool findingRoute = false;
+    bool entered = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,13 +45,31 @@ public class Player : MonoBehaviour
         Food = startFood;
         SMN = startSMN;
         Health = startHealth;
+        fridge = GameObject.FindGameObjectWithTag("food").transform;
+        bed = GameObject.FindGameObjectWithTag("rest").transform;
+        pc = GameObject.FindGameObjectWithTag("action").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("auto: " + auto + ", findingRoute: " + findingRoute + ", entered: " + entered);
+        //Debug.Log(entered);
+        #region Auto Route Finding
+        if (auto && !findingRoute)
+        {
+            StartCoroutine(FindRoute());
+        }
+        if (auto && findingRoute && entered)
+        {
+            StartCoroutine(WaitBeforeMoveAgain());
+        }
+        #endregion
+
+        #region Manual Route Finding
         if (Input.GetMouseButtonDown(0))
         {
+            auto = false;
             Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
 
@@ -53,6 +78,7 @@ public class Player : MonoBehaviour
                 myAgent.SetDestination(hitInfo.point);
             }
         }
+        #endregion
 
         Food -= Time.deltaTime * HungerPerSec;
         FoodBar.fillAmount = Food / startFood;
@@ -66,8 +92,40 @@ public class Player : MonoBehaviour
         //HealthBar.fillAmount = Health / startHealth;
     }
 
+    IEnumerator FindRoute()
+    {
+        //Debug.Log("findroute");
+        findingRoute = true;
+        entered = false;
+        yield return new WaitForSeconds(Random.Range(2, 4));
+        int r = Random.Range(1, 4);
+        if (r == 1)
+        {
+            myAgent.SetDestination(fridge.position);
+            Debug.Log("destination fridge");
+        }else if (r == 2)
+        {
+            myAgent.SetDestination(bed.position);
+            Debug.Log("destination bed");
+        }else if (r == 3)
+        {
+            myAgent.SetDestination(pc.position);
+            Debug.Log("destination pc");
+        }
+    }
+
+    IEnumerator WaitBeforeMoveAgain()
+    {
+        Debug.Log("waiting");
+        entered = false;
+        yield return new WaitForSeconds(Random.Range(2, 4));
+        findingRoute = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
+        entered = true;
+        auto = true;
         if (other.gameObject.tag == "food")
         {
             Food += foodrecoverAmount;
@@ -100,5 +158,28 @@ public class Player : MonoBehaviour
             //add rest behavior to the actions
             MentalBarController.ActionOrder += "r";
         }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("food") && myAgent.destination == fridge.position)
+        {
+            entered = true;
+            Debug.Log("same fridge");
+        }
+        if (other.CompareTag("action") && myAgent.destination == pc.position)
+        {
+            entered = true;
+            Debug.Log("same pc");
+        }
+        if (other.CompareTag("rest") && myAgent.destination == bed.position)
+        {
+            Debug.Log("same bed");
+            entered = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        entered = false;
     }
 }
