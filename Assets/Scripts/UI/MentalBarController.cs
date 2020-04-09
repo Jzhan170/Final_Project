@@ -91,7 +91,7 @@ public class MentalBarController : MonoBehaviour
         {
             isZero = false;
             distort.SetActive(false);
-            lighterdistort.SetActive(true);
+            
         }
 
         //if new behaviors are done and the player has done over four behaviors, detect if the behaviors are done repeatitively. if so, reduce mental bar
