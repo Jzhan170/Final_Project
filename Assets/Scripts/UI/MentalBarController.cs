@@ -37,7 +37,7 @@ public class MentalBarController : MonoBehaviour
         if (shake)
         {
             //The two variables here allow for editing of the magnitude as well as the duration of the shake
-            cameraShake.ScreenShake(.9f, 3.8f);
+            cameraShake.ScreenShake(1.6f, 6f);
         }
     }
 
