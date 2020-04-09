@@ -14,6 +14,7 @@ public class DayTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Allows for object to rotate once the game starts indefinitely by the given speed above
         transform.Rotate(Vector3.up * speed * Time.deltaTime);
     }
 }
