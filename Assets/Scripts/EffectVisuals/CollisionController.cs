@@ -11,6 +11,10 @@ public class CollisionController : MonoBehaviour
     private AudioManager audioManager;
     public string FridgeInteract = "FridgeInteract";
     public string GameController = "GameController";
+    public string Shatter1 = "BottleShatter";
+    public string Shatter2 = "RGlassShatter";
+    public string Shatter3 = "GlasshShatter";
+
 
 
 
@@ -42,26 +46,36 @@ public class CollisionController : MonoBehaviour
             cameraShake.ScreenShake(1.6f, 6f);
         }
 
-        if (other.gameObject.tag == "food")
+        if (other.gameObject.tag == "FoodInteract")
         {
             audioManager.PlaySound(FridgeInteract);
         }
-        if (other.gameObject.tag == "action")
+        if (other.gameObject.tag == "PCInteract")
         {
             audioManager.PlaySound(GameController);
+        }
+
+        if (other.gameObject.tag == "DarkInteractable")
+        {
+            audioManager.PlaySound(Shatter1);
         }
     }
 
      void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "food")
+        if (other.gameObject.tag == "FoodInteract")
         {
             audioManager.StopSound(FridgeInteract);
         }
 
-        if (other.gameObject.tag == "action")
+        if (other.gameObject.tag == "PCInteract")
         {
             audioManager.StopSound(GameController);
+        }
+
+        if (other.gameObject.tag == "DarkInteractable")
+        {
+            audioManager.StopSound(Shatter1);
         }
     }
 }

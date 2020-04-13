@@ -9,6 +9,10 @@ TagManager:
   - rest
   - ShakeTrigger
   - Interactable
+  - OS
+  - DarkInteractable
+  - FoodInteract
+  - PCInteract
   layers:
   - Default
   - TransparentFX

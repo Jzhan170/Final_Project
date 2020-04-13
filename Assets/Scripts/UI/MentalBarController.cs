@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class MentalBarController : MonoBehaviour
 {
+    //Taking object which controls when different objects spawn in the scene
+    public objectSpawner os;
+
     //stores player's actions; new character is added in the Player script
     public static string ActionOrder;
     //detecting whether the mental bar is below a certain amount
@@ -15,8 +18,7 @@ public class MentalBarController : MonoBehaviour
     public Image mentalBar;
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
-    public GameObject dayLight, daySounds, dark, playerDarkLight, darkSounds, distort;
-    //public GameObject dayLight, daySounds, dark, playerDarkLight, darkSounds, distort, lighterdistort;
+    public GameObject dayLight, daySounds, dark, playerDarkLight,darkSounds, intensedarkSounds, distort, lighterdistort;
     public CameraShake cameraShake;
     public float cameraShakeGap;
 
@@ -75,13 +77,18 @@ public class MentalBarController : MonoBehaviour
         }
         if (mentalBar.fillAmount <= .25f)
         {
-            //lighterdistort.SetActive(true);
+            //Allows
+            os.Spawn();
+
+            intensedarkSounds.SetActive(true);
+            lighterdistort.SetActive(true);
             belowQuater = true;
             shake = true;
         }
         else
         {
-            //lighterdistort.SetActive(false);
+            intensedarkSounds.SetActive(false);
+            lighterdistort.SetActive(false);
             belowQuater = false;
             shake = false;
         }
@@ -89,7 +96,7 @@ public class MentalBarController : MonoBehaviour
         {
             isZero = true;
             distort.SetActive(true);
-            //lighterdistort.SetActive(false);
+            lighterdistort.SetActive(false);
         }
         else
         {

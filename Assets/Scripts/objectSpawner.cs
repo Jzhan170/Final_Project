@@ -22,16 +22,16 @@ public class objectSpawner : MonoBehaviour
     
     void Update()
     {
-        timer += Time.deltaTime;
+       /* timer += Time.deltaTime;
 
-        if(timer >= 4&&!spawned)
+        if(timer >= 40&&!spawned)
         {
             Spawn();
             spawned = true;
-        }
+        }*/
     }
 
-    void Spawn()
+    public void Spawn()
     {
         SpawnedObjectClone[0] = Instantiate(SpawnedObject[0], spawnLocations[0].transform.position, Quaternion.Euler(0,0,0)) as GameObject;
         SpawnedObjectClone[1] = Instantiate(SpawnedObject[1], spawnLocations[1].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
