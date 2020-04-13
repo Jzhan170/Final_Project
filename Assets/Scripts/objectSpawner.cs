@@ -12,6 +12,7 @@ public class objectSpawner : MonoBehaviour
     public GameObject[] SpawnedObjectClone;
 
     float timer = 0f;
+    bool spawned = false;
 
     void Start()
     {
@@ -23,9 +24,10 @@ public class objectSpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= 4)
+        if(timer >= 4&&!spawned)
         {
             Spawn();
+            spawned = true;
         }
     }
 
