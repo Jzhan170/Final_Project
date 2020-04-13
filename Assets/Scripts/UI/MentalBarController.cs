@@ -18,6 +18,7 @@ public class MentalBarController : MonoBehaviour
     public Image mentalBar;
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
+    [Header("Light and Sounds")]
     public GameObject dayLight, daySounds, dark, playerDarkLight,darkSounds, intensedarkSounds, distort, lighterdistort;
     public CameraShake cameraShake;
     public float cameraShakeGap;

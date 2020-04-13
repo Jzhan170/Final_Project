@@ -16,6 +16,8 @@ TagManager:
   - BedInteract
   - GymInteract
   - BookInteract
+  - DarkBookInteract
+  - DarkGymInteract
   layers:
   - Default
   - TransparentFX

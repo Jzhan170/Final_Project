@@ -11,7 +11,7 @@ public class objectSpawner : MonoBehaviour
     public GameObject[] SpawnedObject;
     public GameObject[] SpawnedObjectClone;
 
-    float timer = 0f;
+    //float timer = 0f;
     bool spawned = false;
 
     void Start()

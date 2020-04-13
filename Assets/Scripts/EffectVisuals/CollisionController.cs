@@ -15,6 +15,8 @@ public class CollisionController : MonoBehaviour
     public string GymInteract = "WorkoutInteract";
     public string BookInteract1 = "BookInteract1";
     public string BookInteract2 = "BookInteract2";
+    public string DarkBookInteract = "DarkBookInteract";
+    public string DarkGymInteract = "DarkGymInteract";
     public string Shatter1 = "BottleShatter";
     public string Shatter2 = "RGlassShatter";
     public string Shatter3 = "GlasshShatter";
@@ -39,7 +41,7 @@ public class CollisionController : MonoBehaviour
     {
         
     }
-
+    //The trigger functions below control which specific sound will play when the player character collides with a specific object 
      void OnTriggerEnter(Collider other)
     {
         //Once the player character enters the trigger object collider, then
@@ -70,12 +72,21 @@ public class CollisionController : MonoBehaviour
             audioManager.PlaySound(GymInteract);
         }
 
+        if (other.gameObject.tag == "DarkGymInteract")
+        {
+            audioManager.PlaySound(DarkGymInteract);
+        }
+
         if (other.gameObject.tag == "BookInteract")
         {
             audioManager.PlaySound(BookInteract1);
             audioManager.PlaySound(BookInteract2);
         }
 
+        if (other.gameObject.tag == "DarkBookInteract")
+        {
+            audioManager.PlaySound(DarkBookInteract);
+        }
 
         if (other.gameObject.tag == "DarkInteractable")
         {
@@ -105,10 +116,20 @@ public class CollisionController : MonoBehaviour
             audioManager.StopSound(GymInteract);
         }
 
+        if (other.gameObject.tag == "DarkGymInteract")
+        {
+            audioManager.StopSound(DarkGymInteract);
+        }
+
         if (other.gameObject.tag == "BookInteract")
         {
             audioManager.StopSound(BookInteract1);
             audioManager.StopSound(BookInteract2);
+        }
+
+        if (other.gameObject.tag == "DarkBookInteract")
+        {
+            audioManager.StopSound(DarkBookInteract);
         }
 
         if (other.gameObject.tag == "DarkInteractable")
