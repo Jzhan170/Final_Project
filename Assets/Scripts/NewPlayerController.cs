@@ -24,10 +24,17 @@ public class NewPlayerController : MonoBehaviour
     Vector3[] dest;
     GameObject[] interactables;
     //whether the character is in auto route finding mode
-    bool auto = true;
+    bool auto = false;
     //whether the character is running the route finding coroutine
     bool findingRoute = false;
+    //a timer couting how long there's no control input from player
+    [Tooltip("How long should be waited after player does a mouse click")]
+    public float waitTime;
+    float noInputTime = 0;
+
     bool entered = false;
+    //if it's the beginning of the game (if so, start the no input timer immediately)
+    bool beginning = true;
 
     // Start is called before the first frame update
     void Start()
@@ -47,21 +54,25 @@ public class NewPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //at the beginning of the game
+        if (beginning)
+        {
+            noInputTime += Time.deltaTime;
+        }
+
         #region Auto Route Finding
         if (auto && !findingRoute)
         {
             StartCoroutine(FindRoute());
-        }
-        if (auto && findingRoute && entered)
-        {
-            StartCoroutine(WaitBeforeMoveAgain());
         }
         #endregion
 
         #region Manual Route Finding
         if (Input.GetMouseButtonDown(0))
         {
+            beginning = false;
             auto = false;
+            noInputTime = 0;
             Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
 
@@ -75,6 +86,17 @@ public class NewPlayerController : MonoBehaviour
                 //go to the position of the child (usually the front of the object)
                 myAgent.SetDestination(hitInfo.transform.GetChild(0).position);
             }
+        }else if (transform.position == myAgent.destination || entered)
+        {
+            //Debug.Log(noInputTime);
+            noInputTime += Time.deltaTime;
+        }
+        if (noInputTime >= waitTime)
+        {
+            noInputTime = waitTime;
+            auto = true;
+            entered = false;
+            beginning = false;
         }
         #endregion
 
@@ -90,24 +112,16 @@ public class NewPlayerController : MonoBehaviour
     {
         //Debug.Log("findroute");
         findingRoute = true;
-        entered = false;
-        yield return new WaitForSeconds(Random.Range(2, 4));
         int r = Random.Range(0, dest.Length);
+        Debug.Log(interactables[r].name);
         myAgent.SetDestination(dest[r]);
-    }
-
-    IEnumerator WaitBeforeMoveAgain()
-    {
-        Debug.Log("waiting");
-        entered = false;
-        yield return new WaitForSeconds(Random.Range(2, 4));
+        yield return new WaitForSeconds(Random.Range(5f, 9f));
         findingRoute = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         entered = true;
-        auto = true;
         for(int i = 0; i < interactables.Length; i++)
         {
             if (other.gameObject == interactables[i])
@@ -117,15 +131,6 @@ public class NewPlayerController : MonoBehaviour
             }
         }
         
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.transform.GetChild(0).position == myAgent.destination)
-        {
-            entered = true;
-            Debug.Log("same destination");
-        }
     }
     private void OnTriggerExit(Collider other)
     {

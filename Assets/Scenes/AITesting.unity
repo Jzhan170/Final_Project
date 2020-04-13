@@ -1299,7 +1299,6 @@ MonoBehaviour:
   playerDarkLight: {fileID: 1639000302}
   darkSounds: {fileID: 1670729146}
   distort: {fileID: 1647267403}
-  lighterdistort: {fileID: 0}
   cameraShake: {fileID: 1034222214}
   cameraShakeGap: 3
   oldLength: 0
@@ -3712,6 +3711,7 @@ MonoBehaviour:
   HungerPerSec: 1
   SMNBar: {fileID: 1798931492}
   HealthBar: {fileID: 1205782553}
+  waitTime: 5
 --- !u!195 &1204301091
 NavMeshAgent:
   m_ObjectHideFlags: 0
