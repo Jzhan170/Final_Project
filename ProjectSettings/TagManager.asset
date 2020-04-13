@@ -13,6 +13,7 @@ TagManager:
   - DarkInteractable
   - FoodInteract
   - PCInteract
+  - BedInteract
   layers:
   - Default
   - TransparentFX
