@@ -1299,6 +1299,7 @@ MonoBehaviour:
   playerDarkLight: {fileID: 1639000302}
   darkSounds: {fileID: 1670729146}
   distort: {fileID: 1647267403}
+  lighterdistort: {fileID: 0}
   cameraShake: {fileID: 1034222214}
   cameraShakeGap: 3
   oldLength: 0
@@ -2462,9 +2463,10 @@ GameObject:
   - component: {fileID: 896122995}
   - component: {fileID: 896122994}
   - component: {fileID: 896122998}
+  - component: {fileID: 896122999}
   m_Layer: 11
   m_Name: Bed
-  m_TagString: rest
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2559,6 +2561,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &896122999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896122993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fef52452eb754c44bbb2dcee7b2bb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 0
+  stamina: 0
+  health: 0
+  mental: 0
 --- !u!1 &931657285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,10 +3541,10 @@ GameObject:
   - component: {fileID: 1204301087}
   - component: {fileID: 1204301086}
   - component: {fileID: 1204301091}
-  - component: {fileID: 1204301090}
   - component: {fileID: 1204301092}
   - component: {fileID: 1204301093}
   - component: {fileID: 1204301094}
+  - component: {fileID: 1204301090}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -3620,25 +3638,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1204301085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee5f99ac589489408ac0af8a9167ffa, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d83466ca0fe742fb87fc6f1dd338815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   whatCanBeClickedOn:
     serializedVersion: 2
-    m_Bits: 256
-  FoodBar: {fileID: 1714629785}
-  startFood: 100
+    m_Bits: 0
+  FoodBar: {fileID: 0}
   HungerPerSec: 1
-  foodrecoverAmount: 20
-  SMNBar: {fileID: 1798931492}
-  startSMN: 100
-  SMNLost: 25
-  SMNGainRest: 25
-  SMNGainEat: 10
-  HealthBar: {fileID: 1205782553}
-  startHealth: 100
-  HealthrecoverAmount: 10
-  BadHealth: 10
+  SMNBar: {fileID: 0}
+  HealthBar: {fileID: 0}
 --- !u!195 &1204301091
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4099,9 +4108,10 @@ GameObject:
   - component: {fileID: 1325351957}
   - component: {fileID: 1325351956}
   - component: {fileID: 1325351960}
+  - component: {fileID: 1325351961}
   m_Layer: 11
   m_Name: Fridge
-  m_TagString: food
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4196,6 +4206,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1325351961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325351955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fef52452eb754c44bbb2dcee7b2bb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 20
+  stamina: 0
+  health: 0
+  mental: 0
 --- !u!1 &1329785100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,9 +4655,10 @@ GameObject:
   - component: {fileID: 1602828672}
   - component: {fileID: 1602828671}
   - component: {fileID: 1602828675}
+  - component: {fileID: 1602828676}
   m_Layer: 11
   m_Name: PC
-  m_TagString: action
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4726,6 +4753,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1602828676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602828670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fef52452eb754c44bbb2dcee7b2bb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 0
+  stamina: 0
+  health: 0
+  mental: 0
 --- !u!1 &1639000302
 GameObject:
   m_ObjectHideFlags: 0

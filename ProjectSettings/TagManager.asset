@@ -8,6 +8,7 @@ TagManager:
   - action
   - rest
   - ShakeTrigger
+  - Interactable
   layers:
   - Default
   - TransparentFX

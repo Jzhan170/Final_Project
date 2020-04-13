@@ -10,9 +10,12 @@ public class MentalBarController : MonoBehaviour
     //detecting whether the mental bar is below a certain amount
     public static bool belowHalf, belowQuater, isZero;
 
+    public static float Mental;
+
     public Image mentalBar;
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
+    //public GameObject dayLight, daySounds, dark, playerDarkLight, darkSounds, distort;
     public GameObject dayLight, daySounds, dark, playerDarkLight, darkSounds, distort, lighterdistort;
     public CameraShake cameraShake;
     public float cameraShakeGap;
@@ -30,6 +33,7 @@ public class MentalBarController : MonoBehaviour
         ActionOrder = "";
         oldLength = 0;
         InvokeRepeating("Shake", 0, cameraShakeGap);
+        Mental = 100;
     }
 
     void Shake()
@@ -45,9 +49,9 @@ public class MentalBarController : MonoBehaviour
     void Update()
     {
         newLength = ActionOrder.Length;
-
+        mentalBar.fillAmount = Mental / 100;
         //clamp the mental bar fillAmount between 0 and 1
-        mentalBar.fillAmount = Mathf.Clamp(mentalBar.fillAmount, 0, 1);
+        Mental = Mathf.Clamp(Mental, 0, 100);
         
         //set decters to true
         if (mentalBar.fillAmount <= .5f)
@@ -100,43 +104,48 @@ public class MentalBarController : MonoBehaviour
             //if player do one thing repetitively (e.g. eat eat eat)
             if (ActionOrder[newLength-1] == ActionOrder[newLength - 2])
             {
-                mentalBar.fillAmount -= reduceAmount / 100;
+                //mentalBar.fillAmount -= reduceAmount / 100;
+                Mental -= reduceAmount;
                 oldLength = newLength;
             }
             //if player do two things repeatitively (e.g. eat sleep eat sleep)
             if (ActionOrder[newLength - 1] == ActionOrder[newLength - 3] && ActionOrder[newLength - 2] == ActionOrder[newLength - 4])
             {
-                mentalBar.fillAmount -= reduceAmount / 100;
+                //mentalBar.fillAmount -= reduceAmount / 100;
+                Mental -= reduceAmount;
                 oldLength = newLength;
             }
         }
 
         //if food bar is empty for a while
-        if (Player.Food <= 0)
+        if (NewPlayerController.Food <= 0)
         {
             hungryTimer += Time.deltaTime;
             if (hungryTimer >= hungryTime)
             {
-                mentalBar.fillAmount -= 0.0001f;
+                //mentalBar.fillAmount -= 0.0001f;
+                Mental -= 0.01f;
             }
         }
         //if stamina bar drops under 1/3 for a while
-        if (Player.SMN <= 33)
+        if (NewPlayerController.SMN <= 33)
         {
             
             staminaTimer += Time.deltaTime;
             if (staminaTimer >= staminaTime)
             {
-                mentalBar.fillAmount -= 0.0001f;
+                //mentalBar.fillAmount -= 0.0001f;
+                Mental -= 0.01f;
             }
         }
         //if health bar drops under 1/2 for a while
-        if (Player.Health <= 50)
+        if (NewPlayerController.Health <= 50)
         {
             healthTimer += Time.deltaTime;
             if (healthTimer >= healthTime)
             {
-                mentalBar.fillAmount -= 0.0001f;
+                //mentalBar.fillAmount -= 0.0001f;
+                Mental -= 0.01f;
             }
         }
     }
