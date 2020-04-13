@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public LayerMask whatCanBeClickedOn;
 
     private NavMeshAgent myAgent;
-
     public Image FoodBar;
     public float startFood = 100;
     public static float Food;
