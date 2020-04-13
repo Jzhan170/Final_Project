@@ -12,6 +12,9 @@ public class CollisionController : MonoBehaviour
     public string FridgeInteract = "FridgeInteract";
     public string GameController = "GameController";
     public string BedInteract = "BedInteract";
+    public string GymInteract = "WorkoutInteract";
+    public string BookInteract1 = "BookInteract1";
+    public string BookInteract2 = "BookInteract2";
     public string Shatter1 = "BottleShatter";
     public string Shatter2 = "RGlassShatter";
     public string Shatter3 = "GlasshShatter";
@@ -51,14 +54,28 @@ public class CollisionController : MonoBehaviour
         {
             audioManager.PlaySound(FridgeInteract);
         }
+
         if (other.gameObject.tag == "PCInteract")
         {
             audioManager.PlaySound(GameController);
         }
+
         if (other.gameObject.tag == "BedInteract")
         {
             audioManager.PlaySound(BedInteract);
         }
+
+        if (other.gameObject.tag == "GymInteract")
+        {
+            audioManager.PlaySound(GymInteract);
+        }
+
+        if (other.gameObject.tag == "BookInteract")
+        {
+            audioManager.PlaySound(BookInteract1);
+            audioManager.PlaySound(BookInteract2);
+        }
+
 
         if (other.gameObject.tag == "DarkInteractable")
         {
@@ -81,6 +98,17 @@ public class CollisionController : MonoBehaviour
         if (other.gameObject.tag == "BedInteract")
         {
             audioManager.StopSound(BedInteract);
+        }
+
+        if (other.gameObject.tag == "GymInteract")
+        {
+            audioManager.StopSound(GymInteract);
+        }
+
+        if (other.gameObject.tag == "BookInteract")
+        {
+            audioManager.StopSound(BookInteract1);
+            audioManager.StopSound(BookInteract2);
         }
 
         if (other.gameObject.tag == "DarkInteractable")

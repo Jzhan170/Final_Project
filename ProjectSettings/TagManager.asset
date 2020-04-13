@@ -14,6 +14,8 @@ TagManager:
   - FoodInteract
   - PCInteract
   - BedInteract
+  - GymInteract
+  - BookInteract
   layers:
   - Default
   - TransparentFX
