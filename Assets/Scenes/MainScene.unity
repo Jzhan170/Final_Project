@@ -905,10 +905,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fef52452eb754c44bbb2dcee7b2bb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: -10
-  stamina: -25
-  health: 10
-  mental: 0
+  hunger: -15
+  stamina: -30
+  health: 20
+  mental: 10
 --- !u!54 &105588142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5845,8 +5845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fef52452eb754c44bbb2dcee7b2bb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: -10
-  stamina: -25
+  hunger: -5
+  stamina: -15
   health: 10
   mental: 0
 --- !u!54 &1272430886
@@ -5933,7 +5933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272430884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.8, y: 2.11, z: -4.4726}
+  m_LocalPosition: {x: -5.8, y: 2.11, z: -3.97}
   m_LocalScale: {x: 1.6351981, y: 3.8562155, z: 2.5168614}
   m_Children:
   - {fileID: 94290743}
