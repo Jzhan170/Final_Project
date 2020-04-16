@@ -18,6 +18,12 @@ TagManager:
   - BookInteract
   - DarkBookInteract
   - DarkGymInteract
+  - DarkFoodInteract
+  - DarkBedInteract
+  - DarkPCInteract
+  - IntenseDarkBedInteract
+  - IntenseDarkFridgeInteract
+  - IntenseDarkPCInteract
   layers:
   - Default
   - TransparentFX
