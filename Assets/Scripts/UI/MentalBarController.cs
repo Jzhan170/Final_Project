@@ -19,7 +19,7 @@ public class MentalBarController : MonoBehaviour
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
     [Header("Light and Sounds")]
-    public GameObject dayLight, daySounds, dark, playerDarkLight,darkSounds, intensedarkSounds, distort, lighterdistort;
+    public GameObject dayLight, daySounds, EightydarkLight, FiftydarkLight, TwentyfivedarkLight, playerDarkLight,darkSounds, intensedarkSounds, distort, lighterdistort;
     public CameraShake cameraShake;
     public float cameraShakeGap;
 
@@ -57,12 +57,12 @@ public class MentalBarController : MonoBehaviour
         Mental = Mathf.Clamp(Mental, 0, 100);
         
         //set decters to true
-        if (mentalBar.fillAmount <= .5f)
+        if (mentalBar.fillAmount <= .8f)
         {
             belowHalf = true;
             dayLight.SetActive(false);
             daySounds.SetActive(false);
-            dark.SetActive(true);
+            EightydarkLight.SetActive(true);
             darkSounds.SetActive(true);
             playerDarkLight.SetActive(true);
 
@@ -72,15 +72,38 @@ public class MentalBarController : MonoBehaviour
             belowHalf = false;
             dayLight.SetActive(true);
             daySounds.SetActive(true);
-            dark.SetActive(false);
+            EightydarkLight.SetActive(false);
             darkSounds.SetActive(false);
             playerDarkLight.SetActive(false);
         }
+        if (mentalBar.fillAmount <= .5f)
+        {
+            
+            //os.Spawn();
+            FiftydarkLight.SetActive(true);
+            EightydarkLight.SetActive(false);
+            intensedarkSounds.SetActive(true);
+            
+            belowQuater = true;
+            shake = true;
+        }
+        else
+        {
+            FiftydarkLight.SetActive(false);
+            EightydarkLight.SetActive(true);
+            intensedarkSounds.SetActive(false);
+           
+            belowQuater = false;
+            shake = false;
+        }
+
         if (mentalBar.fillAmount <= .25f)
         {
-            //Allows
-            os.Spawn();
 
+            //os.Spawn();
+            TwentyfivedarkLight.SetActive(true);
+            FiftydarkLight.SetActive(false);
+            EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(true);
             lighterdistort.SetActive(true);
             belowQuater = true;
@@ -88,6 +111,9 @@ public class MentalBarController : MonoBehaviour
         }
         else
         {
+            TwentyfivedarkLight.SetActive(false);
+            FiftydarkLight.SetActive(true);
+            EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(false);
             lighterdistort.SetActive(false);
             belowQuater = false;

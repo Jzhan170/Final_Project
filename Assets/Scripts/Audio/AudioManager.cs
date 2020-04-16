@@ -23,6 +23,7 @@ public class Sound
     //Bool for the loop function of Audio Sources
     public bool loop = false;
 
+    
     public AudioSource source;
     /// <summary>
     /// Sets an audio source by allowing you to drag in a sound as you would on any other object with an Audio Source.
@@ -33,6 +34,7 @@ public class Sound
         source = _source;
         source.clip = clip;
         source.loop = loop;
+        //source.outputAudioMixerGroup = ;
     }
     /// <summary>
     /// Stops a sound from playing.
