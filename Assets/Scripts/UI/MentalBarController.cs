@@ -6,8 +6,9 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class MentalBarController : MonoBehaviour
 {
-    //Finds the EffectManager script in the scene
+    //Finds the EffectManager and LightManager scripts in the scene
     private EffectManager em;
+    private LightManager lm;
 
     //stores player's actions; new character is added in the Player script
     public static string ActionOrder;
@@ -34,8 +35,9 @@ public class MentalBarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Looks for the EffectManager in scene inside the Game Manager gameobject
+        //Looks for the EffectManager and LightManager in scene based on their tags.
         em = GameObject.FindGameObjectWithTag("GM").GetComponent<EffectManager>();
+        lm = GameObject.FindGameObjectWithTag("LM").GetComponent<LightManager>();
         ActionOrder = "";
         oldLength = 0;
         InvokeRepeating("Shake", 0, cameraShakeGap);
@@ -62,10 +64,11 @@ public class MentalBarController : MonoBehaviour
         //set decters to true
         if (mentalBar.fillAmount <= .8f)
         {
+            lm.LightEffects();
             belowHalf = true;
             dayLight.SetActive(false);
             daySounds.SetActive(false);
-            EightydarkLight.SetActive(true);
+            //EightydarkLight.SetActive(true);
             darkSounds.SetActive(true);
             playerDarkLight.SetActive(true);
 
@@ -75,7 +78,7 @@ public class MentalBarController : MonoBehaviour
             belowHalf = false;
             dayLight.SetActive(true);
             daySounds.SetActive(true);
-            EightydarkLight.SetActive(false);
+            //EightydarkLight.SetActive(false);
             darkSounds.SetActive(false);
             playerDarkLight.SetActive(false);
         }
@@ -84,7 +87,7 @@ public class MentalBarController : MonoBehaviour
 
             em.DistortionEffects();
             FiftydarkLight.SetActive(true);
-            EightydarkLight.SetActive(false);
+            //EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(true);
             
             belowQuater = true;
@@ -93,7 +96,7 @@ public class MentalBarController : MonoBehaviour
         else
         {
             FiftydarkLight.SetActive(false);
-            EightydarkLight.SetActive(true);
+            //EightydarkLight.SetActive(true);
             intensedarkSounds.SetActive(false);
            
             belowQuater = false;
@@ -106,7 +109,7 @@ public class MentalBarController : MonoBehaviour
             
             TwentyfivedarkLight.SetActive(true);
             FiftydarkLight.SetActive(false);
-            EightydarkLight.SetActive(false);
+            //EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(true);
             belowQuater = true;
             shake = true;
@@ -115,7 +118,7 @@ public class MentalBarController : MonoBehaviour
         {
             TwentyfivedarkLight.SetActive(false);
             FiftydarkLight.SetActive(true);
-            EightydarkLight.SetActive(false);
+            //EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(false);
             belowQuater = false;
             shake = false;

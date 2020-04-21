@@ -25,6 +25,7 @@ TagManager:
   - IntenseDarkFridgeInteract
   - IntenseDarkPCInteract
   - GM
+  - LM
   layers:
   - Default
   - TransparentFX
