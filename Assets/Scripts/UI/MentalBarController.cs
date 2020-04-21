@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class MentalBarController : MonoBehaviour
 {
-    //Taking object which controls when different objects spawn in the scene
-    public objectSpawner os;
+    //Finds the EffectManager script in the scene
+    private EffectManager em;
 
     //stores player's actions; new character is added in the Player script
     public static string ActionOrder;
@@ -19,7 +20,7 @@ public class MentalBarController : MonoBehaviour
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
     [Header("Light and Sounds")]
-    public GameObject dayLight, daySounds, EightydarkLight, FiftydarkLight, TwentyfivedarkLight, playerDarkLight,darkSounds, intensedarkSounds, distort, lighterdistort;
+    public GameObject dayLight, daySounds, EightydarkLight, FiftydarkLight, TwentyfivedarkLight, playerDarkLight,darkSounds, intensedarkSounds, distort;
     public CameraShake cameraShake;
     public float cameraShakeGap;
 
@@ -33,6 +34,8 @@ public class MentalBarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Looks for the EffectManager in scene inside the Game Manager gameobject
+        em = GameObject.FindGameObjectWithTag("GM").GetComponent<EffectManager>();
         ActionOrder = "";
         oldLength = 0;
         InvokeRepeating("Shake", 0, cameraShakeGap);
@@ -76,10 +79,10 @@ public class MentalBarController : MonoBehaviour
             darkSounds.SetActive(false);
             playerDarkLight.SetActive(false);
         }
-        if (mentalBar.fillAmount <= .5f)
+        if (mentalBar.fillAmount <= .52f)
         {
-            
-            //os.Spawn();
+
+            em.DistortionEffects();
             FiftydarkLight.SetActive(true);
             EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(true);
@@ -100,12 +103,11 @@ public class MentalBarController : MonoBehaviour
         if (mentalBar.fillAmount <= .25f)
         {
 
-            //os.Spawn();
+            
             TwentyfivedarkLight.SetActive(true);
             FiftydarkLight.SetActive(false);
             EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(true);
-            lighterdistort.SetActive(true);
             belowQuater = true;
             shake = true;
         }
@@ -115,20 +117,16 @@ public class MentalBarController : MonoBehaviour
             FiftydarkLight.SetActive(true);
             EightydarkLight.SetActive(false);
             intensedarkSounds.SetActive(false);
-            lighterdistort.SetActive(false);
             belowQuater = false;
             shake = false;
         }
         if (mentalBar.fillAmount == 0)
         {
             isZero = true;
-            distort.SetActive(true);
-            lighterdistort.SetActive(false);
         }
         else
         {
             isZero = false;
-            distort.SetActive(false);
             
         }
 
