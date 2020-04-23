@@ -47,9 +47,9 @@ public class LightManager : MonoBehaviour
         //For loop which runs through the array and Lerps the values which were set in the Start function to change based on time.
         for (int i = 0; i < anxiousLights.Length; i++)
         {
-            anxiousLights[i].intensity = Mathf.Lerp(anxiousLights[i].intensity, 1.20f, .02f * Time.deltaTime);
-            anxiousLights[i].bounceIntensity = Mathf.Lerp(anxiousLights[i].bounceIntensity, 1f, .02f * Time.deltaTime);
-            anxiousLights[i].range = Mathf.Lerp(anxiousLights[i].range, 20f, .02f * Time.deltaTime);
+            anxiousLights[i].intensity = Mathf.Lerp(anxiousLights[i].intensity, 1.20f, .04f * Time.deltaTime);
+            anxiousLights[i].bounceIntensity = Mathf.Lerp(anxiousLights[i].bounceIntensity, 1f, .04f * Time.deltaTime);
+            anxiousLights[i].range = Mathf.Lerp(anxiousLights[i].range, 20f, .04f * Time.deltaTime);
         }
 
 
