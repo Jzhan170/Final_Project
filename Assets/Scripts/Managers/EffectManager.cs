@@ -10,6 +10,7 @@ public class EffectManager : MonoBehaviour
     public PostProcessVolume bloomcolor;
     public PostProcessVolume ambientlight;
 
+    //Each represents a Post Processing effect being used in the game
     private LensDistortion lensDistortion;
     private ChromaticAberration chromAberration;
     private Grain grain;
@@ -20,7 +21,10 @@ public class EffectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TryGetSettings takes gets the settings of the Post Processing Volume for each effect specified.
         distortion.profile.TryGetSettings(out lensDistortion);
+        //After taking the Post Processing Profile above and specifying which effect it refers to
+        //then the properties of the effect can be controlled and set here.
         lensDistortion.intensity.value = 0;
         lensDistortion.scale.value = 0.8f;
 
@@ -45,7 +49,9 @@ public class EffectManager : MonoBehaviour
         ambientOcc.radius.value = 4.72f;
     }
 
-
+    /// <summary>
+    /// Lerps and controls the values of each effect property over time.
+    /// </summary>
     public void DistortionEffects()
     {
         lensDistortion.intensity.value = Mathf.Lerp(lensDistortion.intensity.value, 100, .05f * Time.deltaTime);

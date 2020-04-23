@@ -87,7 +87,7 @@ public class MentalBarController : MonoBehaviour
             intensedarkSounds.SetActive(true);
             
             belowQuater = true;
-            shake = true;
+            
         }
         else
         {
@@ -95,7 +95,7 @@ public class MentalBarController : MonoBehaviour
             intensedarkSounds.SetActive(false);
             dayLight.SetActive(true);
             belowQuater = false;
-            shake = false;
+            
         }
 
         if (mentalBar.fillAmount <= .25f)
