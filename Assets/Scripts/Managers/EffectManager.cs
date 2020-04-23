@@ -22,7 +22,7 @@ public class EffectManager : MonoBehaviour
     {
         distortion.profile.TryGetSettings(out lensDistortion);
         lensDistortion.intensity.value = 0;
-        lensDistortion.scale.value = 1;
+        lensDistortion.scale.value = 0.8f;
 
         distortion.profile.TryGetSettings(out chromAberration);
         chromAberration.intensity.value = 0;
@@ -48,10 +48,10 @@ public class EffectManager : MonoBehaviour
 
     public void DistortionEffects()
     {
-        lensDistortion.intensity.value = Mathf.Lerp(lensDistortion.intensity.value, 90, .05f * Time.deltaTime);
-        grain.intensity.value = Mathf.Lerp(grain.intensity.value, 0.5f, .05f * Time.deltaTime);
-        grain.size.value = Mathf.Lerp(grain.size.value, 2.5f, .05f * Time.deltaTime);
-        lensDistortion.scale.value = Mathf.Lerp(lensDistortion.scale.value, .8f, .05f * Time.deltaTime);
+        lensDistortion.intensity.value = Mathf.Lerp(lensDistortion.intensity.value, 100, .05f * Time.deltaTime);
+        grain.intensity.value = Mathf.Lerp(grain.intensity.value, 1, .05f * Time.deltaTime);
+        grain.size.value = Mathf.Lerp(grain.size.value, 3f, .05f * Time.deltaTime);
+        lensDistortion.scale.value = Mathf.Lerp(lensDistortion.scale.value, 0, .01f * Time.deltaTime);
         chromAberration.intensity.value = Mathf.Lerp(chromAberration.intensity.value, 1, .05f * Time.deltaTime);
         colorGrading.brightness.value = Mathf.Lerp(colorGrading.brightness.value, 0, .009f * Time.deltaTime);
         colorGrading.contrast.value = Mathf.Lerp(colorGrading.contrast.value, 0, .009f * Time.deltaTime);
