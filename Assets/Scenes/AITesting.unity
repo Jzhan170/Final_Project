@@ -902,7 +902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1295,9 +1295,12 @@ MonoBehaviour:
   healthTime: 5
   dayLight: {fileID: 430527469}
   daySounds: {fileID: 1329785100}
-  dark: {fileID: 432146286}
+  EightydarkLight: {fileID: 0}
+  FiftydarkLight: {fileID: 0}
+  TwentyfivedarkLight: {fileID: 0}
   playerDarkLight: {fileID: 1639000302}
   darkSounds: {fileID: 1670729146}
+  intensedarkSounds: {fileID: 0}
   distort: {fileID: 1647267403}
   cameraShake: {fileID: 1034222214}
   cameraShakeGap: 3
@@ -3765,6 +3768,23 @@ MonoBehaviour:
   cameraShake: {fileID: 1034222214}
   FridgeInteract: FridgeInteract
   GameController: GameController
+  BedInteract: BedInteract
+  PCInteract: PCInteract
+  WorkoutInteract1: WorkoutInteract1
+  WorkoutInteract2: WorkoutInteract2
+  BookInteract1: BookInteract1
+  BookInteract2: BookInteract2
+  DarkFridgeInteract: DarkFridgeInteract
+  IntenseDarkFridgeInteract: IntenseDarkFridgeInteract
+  DarkBedInteract: DarkBedInteract
+  IntenseDarkBedInteract: IntenseDarkBedInteract
+  MildDarkPCInteract: MildDarkPCInteract
+  IntenseDarkPCInteract: IntenseDarkPCInteract
+  DarkBookInteract: DarkBookInteract
+  DarkGymInteract: DarkGymInteract
+  Shatter1: BottleShatter
+  Shatter2: RGlassShatter
+  Shatter3: GlasshShatter
 --- !u!81 &1204301094
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4211,7 +4231,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1f90bdd82ce3b14bbbc1d70dc42e0a2, type: 2}
+  - {fileID: 2100000, guid: 149015c85a1bb4ad1b64da55bebf1226, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5156,7 +5176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
