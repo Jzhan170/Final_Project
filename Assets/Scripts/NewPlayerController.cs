@@ -61,7 +61,7 @@ public class NewPlayerController : MonoBehaviour
         }
 
         #region Auto Route Finding
-        if (auto && !findingRoute)
+        if (auto && !findingRoute && !MentalBarController.belowHalf)
         {
             StartCoroutine(FindRoute());
         }
