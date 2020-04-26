@@ -57,10 +57,16 @@ public class MentalBarController : MonoBehaviour
     void Update()
     {
         newLength = ActionOrder.Length;
-        mentalBar.fillAmount = Mental / 100;
+        //mentalBar.fillAmount = Mental / 100;
         //clamp the mental bar fillAmount between 0 and 1
         Mental = Mathf.Clamp(Mental, 0, 100);
-        
+
+        //a more gradual change in the bar
+        if (Mental / 100 != mentalBar.fillAmount)
+        {
+            mentalBar.fillAmount += (Mental / 100 - mentalBar.fillAmount) * Time.deltaTime;
+        }
+
         //set decters to true
         if (mentalBar.fillAmount <= .8f)
         {

@@ -12,7 +12,7 @@ public class NewPlayerController : MonoBehaviour
 
     public Image FoodBar;
     public static float Food;
-    public float HungerPerSec = 1;
+    public float HungerPerSec = .3f;
 
     public Image SMNBar;
     public static float SMN;
@@ -34,6 +34,11 @@ public class NewPlayerController : MonoBehaviour
 
     bool entered = false;
 
+    public static float actTime;
+    public GameObject coolDown;
+    public static float coolDownFill;
+    public static bool actionDone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +52,7 @@ public class NewPlayerController : MonoBehaviour
         Food = 100;
         SMN = 100;
         Health = 100;
+        actionDone = false;
     }
 
     // Update is called once per frame
@@ -55,11 +61,30 @@ public class NewPlayerController : MonoBehaviour
         //at the beginning of the game
         if (!GameManage.gameStarted)
         {
-            noInputTime += Time.deltaTime;
+            noInputTime += Time.deltaTime * 2;
+            //Debug.Log(noInputTime);
+            if (auto && !findingRoute && !MentalBarController.belowHalf && !actionDone)
+            {
+                StartCoroutine(FindRoute());
+            }
         }
 
+        coolDownFill = Mathf.Clamp(coolDownFill, 0, 1);
+        //Debug.Log(coolDownFill);
+        coolDown.GetComponent<Image>().fillAmount = coolDownFill;
+        if (coolDownFill >= 1 || coolDownFill <= 0)
+        {
+            coolDown.SetActive(false);
+        }
+        else
+        {
+            coolDown.SetActive(true);
+        }
+        Vector3 coolDownPos = Camera.main.WorldToScreenPoint(transform.position);
+        coolDown.transform.position = coolDownPos;
+
         #region Auto Route Finding
-        if (auto && !findingRoute && !MentalBarController.belowHalf)
+        if (auto && !findingRoute && !MentalBarController.belowHalf && actionDone && GameManage.gameStarted)
         {
             StartCoroutine(FindRoute());
         }
@@ -83,7 +108,7 @@ public class NewPlayerController : MonoBehaviour
                 //go to the position of the child (usually the front of the object)
                 myAgent.SetDestination(hitInfo.transform.GetChild(0).position);
             }
-        }else if (transform.position == myAgent.destination || entered)
+        }else if (transform.position == myAgent.destination && actionDone || entered && actionDone)
         {
             //Debug.Log(noInputTime);
             noInputTime += Time.deltaTime;
@@ -96,13 +121,31 @@ public class NewPlayerController : MonoBehaviour
         }
         #endregion
 
-        Food -= Time.deltaTime * HungerPerSec;
-        FoodBar.fillAmount = Food / 100;
+        if (GameManage.gameStarted)
+        {
+            Food -= Time.deltaTime * HungerPerSec;
+            //FoodBar.fillAmount = Food / 100;
 
-        //clamp the floats between 0 and 100
-        Food = Mathf.Clamp(Food, 0, 100);
-        SMN = Mathf.Clamp(SMN, 0, 100);
-        Health = Mathf.Clamp(Health, 0, 100);
+            //clamp the floats between 0 and 100
+            Food = Mathf.Clamp(Food, 0, 100);
+            SMN = Mathf.Clamp(SMN, 0, 100);
+            Health = Mathf.Clamp(Health, 0, 100);
+
+            //create more gradual changes in the bars
+            if (Food / 100 != FoodBar.fillAmount)
+            {
+                FoodBar.fillAmount += (Food / 100 - FoodBar.fillAmount) * Time.deltaTime;
+            }
+            if (SMN / 100 != SMNBar.fillAmount)
+            {
+                SMNBar.fillAmount += (SMN / 100 - SMNBar.fillAmount) * Time.deltaTime;
+            }
+            if (Health / 100 != HealthBar.fillAmount)
+            {
+                HealthBar.fillAmount += (Health / 100 - HealthBar.fillAmount) * Time.deltaTime;
+            }
+        }
+        
     }
     IEnumerator FindRoute()
     {
@@ -113,6 +156,7 @@ public class NewPlayerController : MonoBehaviour
         myAgent.SetDestination(dest[r]);
         yield return new WaitForSeconds(Random.Range(5f, 9f));
         findingRoute = false;
+        //yield return null;
     }
 
     private void OnTriggerEnter(Collider other)
