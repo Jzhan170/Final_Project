@@ -24,7 +24,7 @@ public class InteractableController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && GameManage.gameStarted)
         {
             NewPlayerController.Food += hunger;
             NewPlayerController.SMN += stamina;

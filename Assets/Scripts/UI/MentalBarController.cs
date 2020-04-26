@@ -65,7 +65,6 @@ public class MentalBarController : MonoBehaviour
         if (mentalBar.fillAmount <= .8f)
         {
             lm.LightEffects();
-            belowHalf = true;
             //dayLight.SetActive(false);
             daySounds.SetActive(false);;
             darkSounds.SetActive(true);
@@ -74,7 +73,6 @@ public class MentalBarController : MonoBehaviour
         }
         else
         {
-            belowHalf = false;
             //dayLight.SetActive(true);
             daySounds.SetActive(true);
             darkSounds.SetActive(false);
@@ -85,16 +83,14 @@ public class MentalBarController : MonoBehaviour
             dayLight.SetActive(false);
             em.DistortionEffects();
             intensedarkSounds.SetActive(true);
-            
-            belowQuater = true;
+            belowHalf = true;
             
         }
         else
         {
-
+            belowHalf = false;
             intensedarkSounds.SetActive(false);
             dayLight.SetActive(true);
-            belowQuater = false;
             
         }
 

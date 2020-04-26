@@ -33,8 +33,6 @@ public class NewPlayerController : MonoBehaviour
     float noInputTime = 0;
 
     bool entered = false;
-    //if it's the beginning of the game (if so, start the no input timer immediately)
-    bool beginning = true;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +53,7 @@ public class NewPlayerController : MonoBehaviour
     void Update()
     {
         //at the beginning of the game
-        if (beginning)
+        if (!GameManage.gameStarted)
         {
             noInputTime += Time.deltaTime;
         }
@@ -70,7 +68,6 @@ public class NewPlayerController : MonoBehaviour
         #region Manual Route Finding
         if (Input.GetMouseButtonDown(0))
         {
-            beginning = false;
             auto = false;
             noInputTime = 0;
             Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -96,7 +93,6 @@ public class NewPlayerController : MonoBehaviour
             noInputTime = waitTime;
             auto = true;
             entered = false;
-            beginning = false;
         }
         #endregion
 
