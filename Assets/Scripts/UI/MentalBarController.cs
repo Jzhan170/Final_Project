@@ -62,11 +62,11 @@ public class MentalBarController : MonoBehaviour
         Mental = Mathf.Clamp(Mental, 0, 100);
 
         //a more gradual change in the bar
-        if (Mental / 100 != mentalBar.fillAmount && mentalBar.fillAmount>0.1f)
+        if (Mental / 100 != mentalBar.fillAmount && mentalBar.fillAmount>0.01f)
         {
             mentalBar.fillAmount += (Mental / 100 - mentalBar.fillAmount) * Time.deltaTime;
         }
-        if (mentalBar.fillAmount<.1f)
+        if (mentalBar.fillAmount<.01f)
         {
             Mental = 0;
             mentalBar.fillAmount = 0;
