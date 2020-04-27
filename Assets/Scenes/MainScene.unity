@@ -4093,8 +4093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hunger: 0
-  stamina: 25
-  health: 0
+  stamina: -10
+  health: 25
   mental: 0
   actionTime: 12
   hoverIcon: {fileID: 955610331}
@@ -6630,7 +6630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hunger: 20
-  stamina: 0
+  stamina: -10
   health: -10
   mental: 0
   actionTime: 3
