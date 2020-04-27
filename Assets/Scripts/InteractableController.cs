@@ -6,10 +6,16 @@ public class InteractableController : MonoBehaviour
 {
     [Header("Status Changes to Player once Entered")]
     public float hunger;
+    [InspectorName("entertainment")]
     public float stamina;
+
+    [InspectorName("rest")]
     public float health;
+
     public float mental;
     public float actionTime;
+
+    public GameObject hoverIcon;
 
     bool actionStart;
 
@@ -17,6 +23,7 @@ public class InteractableController : MonoBehaviour
     void Start()
     {
         actionStart = false;
+        hoverIcon.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,6 +44,10 @@ public class InteractableController : MonoBehaviour
             NewPlayerController.SMN += stamina;
             NewPlayerController.Health += health;
             MentalBarController.Mental += mental;
+        }
+        if (hoverIcon)
+        {
+            hoverIcon.transform.position = Input.mousePosition;
         }
     }
 
@@ -61,4 +72,23 @@ public class InteractableController : MonoBehaviour
             NewPlayerController.coolDownFill = 0;
         }
     }
+
+    private void OnMouseEnter()
+    {
+        if (GameManage.gameStarted)
+        {
+            Cursor.visible = false;
+            hoverIcon.SetActive(true);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (GameManage.gameStarted)
+        {
+            Cursor.visible = true;
+            hoverIcon.SetActive(false);
+        }
+    }
+    
 }
