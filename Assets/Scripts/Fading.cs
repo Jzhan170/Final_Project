@@ -22,7 +22,6 @@ public class Fading : MonoBehaviour
         if (MentalBarController.isZero == true)
         {
             currentTime -= 1 * Time.deltaTime;
-
             if(currentTime <= 0)
             {
                 Fade(1);
