@@ -21,7 +21,7 @@ public class MentalBarController : MonoBehaviour
     public float reduceAmount;
     public float hungryTime, staminaTime, healthTime;
     [Header("Light and Sounds")]
-    public GameObject dayLight, daySounds, playerDarkLight,darkSounds, intensedarkSounds, distort;
+    public GameObject dayLight, daySounds,darkSounds, intensedarkSounds, distort;
     public CameraShake cameraShake;
     public float cameraShakeGap;
 
@@ -79,7 +79,7 @@ public class MentalBarController : MonoBehaviour
             //dayLight.SetActive(false);
             daySounds.SetActive(false);;
             darkSounds.SetActive(true);
-            playerDarkLight.SetActive(true);
+            
 
         }
         else
@@ -87,7 +87,7 @@ public class MentalBarController : MonoBehaviour
             //dayLight.SetActive(true);
             daySounds.SetActive(true);
             darkSounds.SetActive(false);
-            playerDarkLight.SetActive(false);
+           
         }
         if (mentalBar.fillAmount <= .52f)
         {

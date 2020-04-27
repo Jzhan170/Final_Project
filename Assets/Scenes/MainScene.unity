@@ -2610,7 +2610,6 @@ MonoBehaviour:
   healthTime: 5
   dayLight: {fileID: 430527469}
   daySounds: {fileID: 1329785100}
-  playerDarkLight: {fileID: 1639000302}
   darkSounds: {fileID: 1670729146}
   intensedarkSounds: {fileID: 562185108}
   distort: {fileID: 1647267403}
@@ -5269,7 +5268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1157130866
 Transform:
   m_ObjectHideFlags: 0
