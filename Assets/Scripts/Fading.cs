@@ -7,18 +7,26 @@ public class Fading : MonoBehaviour
 {
     public Animator animator;
     private int levelToLoad;
-    
+
+    float currentTime = 0f;
+    float startingTime = 10f;
+
     void Start()
     {
-        
+        currentTime = startingTime;
     }
 
     
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (MentalBarController.isZero == true)
         {
-            Fade(1);
+            currentTime -= 1 * Time.deltaTime;
+
+            if(currentTime <= 0)
+            {
+                Fade(1);
+            }
         }
     }
 
