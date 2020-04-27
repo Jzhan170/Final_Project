@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManage : MonoBehaviour
 {
     public static bool gameStarted;
     public GameObject Title, UI;
+    public GameObject mentalBar;
 
     // Start is called before the first frame update
     void Start()
@@ -13,6 +15,7 @@ public class GameManage : MonoBehaviour
         gameStarted = false;
         Title.SetActive(true);
         UI.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -24,5 +27,6 @@ public class GameManage : MonoBehaviour
             Title.SetActive(false);
             UI.SetActive(true);
         }
+        UI.GetComponent<CanvasGroup>().alpha = mentalBar.GetComponent<Image>().fillAmount;
     }
 }
