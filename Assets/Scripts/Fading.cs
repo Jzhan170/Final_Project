@@ -9,7 +9,7 @@ public class Fading : MonoBehaviour
     private int levelToLoad;
 
     float currentTime = 0f;
-    float startingTime = 10f;
+    float startingTime = 40f;
 
     void Start()
     {
