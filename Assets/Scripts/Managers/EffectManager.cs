@@ -57,14 +57,14 @@ public class EffectManager : MonoBehaviour
         lensDistortion.intensity.value = Mathf.Lerp(lensDistortion.intensity.value, 100, .05f * Time.deltaTime);
         grain.intensity.value = Mathf.Lerp(grain.intensity.value, 1, .05f * Time.deltaTime);
         grain.size.value = Mathf.Lerp(grain.size.value, 3f, .05f * Time.deltaTime);
-        lensDistortion.scale.value = Mathf.Lerp(lensDistortion.scale.value, 0, .01f * Time.deltaTime);
+        lensDistortion.scale.value = Mathf.Lerp(lensDistortion.scale.value, 0, .005f * Time.deltaTime);
         chromAberration.intensity.value = Mathf.Lerp(chromAberration.intensity.value, 1, .05f * Time.deltaTime);
-        colorGrading.brightness.value = Mathf.Lerp(colorGrading.brightness.value, 0, .009f * Time.deltaTime);
-        colorGrading.contrast.value = Mathf.Lerp(colorGrading.contrast.value, 0, .009f * Time.deltaTime);
-        bloom.intensity.value = Mathf.Lerp(bloom.intensity.value, 0, .009f * Time.deltaTime);
-        bloom.threshold.value = Mathf.Lerp(bloom.threshold.value, 1, .009f * Time.deltaTime);
-        bloom.diffusion.value = Mathf.Lerp(bloom.diffusion.value, 1, .009f * Time.deltaTime);
-        ambientOcc.intensity.value = Mathf.Lerp(ambientOcc.intensity.value, 4, .009f * Time.deltaTime);
-        ambientOcc.radius.value = Mathf.Lerp(ambientOcc.radius.value, 12, .009f * Time.deltaTime);
+        colorGrading.brightness.value = Mathf.Lerp(colorGrading.brightness.value, 0, .005f * Time.deltaTime);
+        colorGrading.contrast.value = Mathf.Lerp(colorGrading.contrast.value, 0, .005f * Time.deltaTime);
+        bloom.intensity.value = Mathf.Lerp(bloom.intensity.value, 0, .005f * Time.deltaTime);
+        bloom.threshold.value = Mathf.Lerp(bloom.threshold.value, 1, .005f * Time.deltaTime);
+        bloom.diffusion.value = Mathf.Lerp(bloom.diffusion.value, 1, .005f * Time.deltaTime);
+        ambientOcc.intensity.value = Mathf.Lerp(ambientOcc.intensity.value, 4, .005f * Time.deltaTime);
+        ambientOcc.radius.value = Mathf.Lerp(ambientOcc.radius.value, 12, .005f * Time.deltaTime);
     }
 }
