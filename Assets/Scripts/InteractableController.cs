@@ -47,6 +47,7 @@ public class InteractableController : MonoBehaviour
             NewPlayerController.actTime = 0;
             actionStart = true;
             NewPlayerController.actionDone = false;
+            NewPlayerController.coolDownFill = 0;
         }
     }
 
@@ -57,6 +58,7 @@ public class InteractableController : MonoBehaviour
             actionStart = false;
             NewPlayerController.actTime = 0;
             NewPlayerController.actionDone = false;
+            NewPlayerController.coolDownFill = 0;
         }
     }
 }
