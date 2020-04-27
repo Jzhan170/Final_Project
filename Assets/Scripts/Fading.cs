@@ -25,7 +25,7 @@ public class Fading : MonoBehaviour
     public void Fade(int levelIndex)
     {
         levelToLoad = levelIndex;
-        animator.SetTrigger("FadingShader");
+        animator.SetTrigger("FadeOut");
     }
 
     public void FadeComplete()
