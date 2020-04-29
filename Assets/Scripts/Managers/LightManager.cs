@@ -30,7 +30,7 @@ public class LightManager : MonoBehaviour
         lampLight.range = 0f;
         lampLight.shadowStrength = 0f;
 
-
+        InvokeRepeating("LampLight", 0, 44f);
 
     }
 
