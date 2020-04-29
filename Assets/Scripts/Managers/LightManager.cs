@@ -37,7 +37,7 @@ public class LightManager : MonoBehaviour
         Sun.bounceIntensity = 1.96f;
 
         //Invoke Repeat function to apply the LampLight function every 44 seconds
-        InvokeRepeating("LampLight", 0, 44);
+        InvokeRepeating("LampLight", 0, 3);
 
     }
     /// <summary>
@@ -54,8 +54,8 @@ public class LightManager : MonoBehaviour
             anxiousLights[i].range = Mathf.Lerp(anxiousLights[i].range, 20f, .04f * Time.deltaTime);
         }
         //Same as above
-        Sun.intensity = Mathf.Lerp(Sun.intensity, 0f, .08f * Time.deltaTime);
-        Sun.bounceIntensity = Mathf.Lerp(Sun.bounceIntensity, 0f, .08f * Time.deltaTime);
+        Sun.intensity = Mathf.Lerp(Sun.intensity, 0f, .05f * Time.deltaTime);
+        Sun.bounceIntensity = Mathf.Lerp(Sun.bounceIntensity, 0f, .05f * Time.deltaTime);
 
 
     }
