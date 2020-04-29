@@ -12,7 +12,7 @@ public class LightManager : MonoBehaviour
     public Light Sun;
 
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         
@@ -36,7 +36,7 @@ public class LightManager : MonoBehaviour
         Sun.intensity = 0.5f;
         Sun.bounceIntensity = 1.96f;
 
-        //Invoke Repeat function to apply the LampLight function every 44 seconds
+        //Invoke Repeat function to apply the LampLight function every 3 seconds
         InvokeRepeating("LampLight", 0, 3);
 
     }
@@ -69,6 +69,17 @@ public class LightManager : MonoBehaviour
         lampLight.range = Mathf.Lerp(lampLight.range, 7.81f, 1.2f * Time.deltaTime);
         lampLight.shadowStrength = Mathf.Lerp(lampLight.shadowStrength, .659f, 1.2f * Time.deltaTime);
     }
+
+    /// <summary>
+    /// Lerps the lamp light object's intensity properties over time to dim them
+    /// </summary>
+   /* public void DimLampLight()
+    {
+        lampLight.intensity = Mathf.Lerp(1.42f, 0f, 1.2f * Time.deltaTime);
+        lampLight.bounceIntensity = Mathf.Lerp(1.9f, 0f, 1.2f * Time.deltaTime);
+        lampLight.range = Mathf.Lerp(7.81f, 0f, 1.2f * Time.deltaTime);
+        lampLight.shadowStrength = Mathf.Lerp(.659f, 0f, 1.2f * Time.deltaTime);
+    } */
 
 
 }
