@@ -7,7 +7,9 @@ public class LightManager : MonoBehaviour
     
     //Creates an array of light objects which allows specific light objects to be dragged into the inspector
     public Light[] anxiousLights;
+    //Other light objects which will be controlled below
     public Light lampLight;
+    public Light Sun;
 
 
     // Start is called before the first frame update
@@ -24,16 +26,23 @@ public class LightManager : MonoBehaviour
             anxiousLights[i].bounceIntensity = 1.9f;
             anxiousLights[i].range = 10f;
         }
-
+        //Same as with the loop above
         lampLight.intensity = 0f;
         lampLight.bounceIntensity = 0f;
         lampLight.range = 0f;
         lampLight.shadowStrength = 0f;
 
-        InvokeRepeating("LampLight", 0, 44f);
+        //Same as with the loop above
+        Sun.intensity = 0.5f;
+        Sun.bounceIntensity = 1.96f;
+
+        //Invoke Repeat function to apply the LampLight function every 44 seconds
+        InvokeRepeating("LampLight", 0, 44);
 
     }
-
+    /// <summary>
+    /// Lerps lighting object intensities over time
+    /// </summary>
     public void LightEffects()
     {
   
@@ -44,16 +53,21 @@ public class LightManager : MonoBehaviour
             anxiousLights[i].bounceIntensity = Mathf.Lerp(anxiousLights[i].bounceIntensity, 1f, .04f * Time.deltaTime);
             anxiousLights[i].range = Mathf.Lerp(anxiousLights[i].range, 20f, .04f * Time.deltaTime);
         }
+        //Same as above
+        Sun.intensity = Mathf.Lerp(Sun.intensity, 0f, .08f * Time.deltaTime);
+        Sun.bounceIntensity = Mathf.Lerp(Sun.bounceIntensity, 0f, .08f * Time.deltaTime);
 
 
     }
-
+    /// <summary>
+    /// Lerps the lamp light object's intensity properties over time
+    /// </summary>
     public void LampLight()
     {
-        lampLight.intensity = Mathf.Lerp(lampLight.intensity, 1.42f, .04f * Time.deltaTime);
-        lampLight.bounceIntensity = Mathf.Lerp(lampLight.bounceIntensity, 1.9f, .04f * Time.deltaTime);
-        lampLight.range = Mathf.Lerp(lampLight.range, 7.81f, .04f * Time.deltaTime);
-        lampLight.shadowStrength = Mathf.Lerp(lampLight.shadowStrength, .659f, .04f * Time.deltaTime);
+        lampLight.intensity = Mathf.Lerp(lampLight.intensity, 1.42f, 1.2f * Time.deltaTime);
+        lampLight.bounceIntensity = Mathf.Lerp(lampLight.bounceIntensity, 1.9f, 1.2f * Time.deltaTime);
+        lampLight.range = Mathf.Lerp(lampLight.range, 7.81f, 1.2f * Time.deltaTime);
+        lampLight.shadowStrength = Mathf.Lerp(lampLight.shadowStrength, .659f, 1.2f * Time.deltaTime);
     }
 
 
