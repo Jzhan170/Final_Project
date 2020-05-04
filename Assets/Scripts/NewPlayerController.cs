@@ -84,14 +84,22 @@ public class NewPlayerController : MonoBehaviour
         coolDown.transform.position = coolDownPos;
 
         #region Auto Route Finding
-        if (auto && !findingRoute && !MentalBarController.belowHalf && actionDone && GameManage.gameStarted)
+        if (auto && !findingRoute && !MentalBarController.belowHalf && actionDone && GameManage.gameStarted && !GameManage.dialog)
         {
             StartCoroutine(FindRoute());
+        }
+        if (GameManage.dialog)
+        {
+            myAgent.isStopped = true;
+        }
+        else
+        {
+            myAgent.isStopped = false;
         }
         #endregion
 
         #region Manual Route Finding
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameManage.gameStarted)
         {
             auto = false;
             noInputTime = 0;

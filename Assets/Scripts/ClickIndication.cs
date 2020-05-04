@@ -12,21 +12,24 @@ public class ClickIndication : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if(Physics.Raycast(ray, out hit, raycastLength))
+        if (GameManage.gameStarted)
         {
-            //if (hit.collider.name == "floor")
-            //{
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
+            if(Physics.Raycast(ray, out hit, raycastLength))
+            {
+                //if (hit.collider.name == "floor")
+                //{
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
 
 
-                    GameObject TargetMarker = Instantiate(Marker, hit.point, Quaternion.identity) as GameObject;
+                        GameObject TargetMarker = Instantiate(Marker, hit.point, Quaternion.identity) as GameObject;
 
 
-                }
-            //}
+                    }
+                //}
+            }
         }
+        
         
     }
 

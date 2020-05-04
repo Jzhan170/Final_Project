@@ -22,6 +22,23 @@ public class Dialog : MonoBehaviour
         {
             continueButton.SetActive(true);
         }
+
+        if (continueButton.activeSelf && Input.GetMouseButton(0))
+        {
+            continueButton.SetActive(false);
+            if (index < sentences.Length - 1)
+            {
+                index++;
+                textDisplay.text = "";
+                StartCoroutine(Type());
+            }
+            else
+            {
+                textDisplay.text = "";
+                continueButton.SetActive(false);
+                GameManage.dialogFinished = true;
+            }
+        }
     }
 
     IEnumerator Type()
@@ -46,6 +63,9 @@ public class Dialog : MonoBehaviour
         {
             textDisplay.text = "";
             continueButton.SetActive(false);
+            GameManage.dialogFinished = true;
         }
     }
+
+
 }
