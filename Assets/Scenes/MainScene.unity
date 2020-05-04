@@ -7725,9 +7725,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 1961657690}
   sentences:
-  - 'News Broadcast: Due to the current outbreak, '
-  - 'Please stay in home and remain social distance. '
-  - Visit our website for further updates.
+  - 'Emergency News Broadcast: Due to the current pandemic, '
+  - 'We advise you to stay home and maintain social distancing. '
+  - Visit our website for live updates.
   continueButton: {fileID: 1675012691}
 --- !u!4 &1597568913
 Transform:
