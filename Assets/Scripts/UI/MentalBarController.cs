@@ -40,18 +40,18 @@ public class MentalBarController : MonoBehaviour
         lm = GameObject.FindGameObjectWithTag("LM").GetComponent<LightManager>();
         ActionOrder = "";
         oldLength = 0;
-        //InvokeRepeating("Shake", 0, cameraShakeGap);
+        InvokeRepeating("Shake", 0, cameraShakeGap);
         Mental = 100;
     }
 
-   /* void Shake()
+   void Shake()
     {
         if (shake)
         {
             //The two variables here allow for editing of the magnitude as well as the duration of the shake
-            cameraShake.ScreenShake(1.6f, 6f);
+            cameraShake.ScreenShake(.5f, 4f);
         }
-    } */
+    } 
 
     // Update is called once per frame
     void Update()
@@ -89,10 +89,9 @@ public class MentalBarController : MonoBehaviour
             darkSounds.SetActive(false);
            
         }
-        if (mentalBar.fillAmount <= .52f)
+        if (mentalBar.fillAmount <= .5f)
         {
-            dayLight.SetActive(false);
-            
+            dayLight.SetActive(false);   
             intensedarkSounds.SetActive(true);
             belowHalf = true;
             

@@ -19,7 +19,7 @@ public class NewPlayerController : MonoBehaviour
 
     public Image HealthBar;
     public static float Health;
-
+    
     //possible destinations for player to go
     Vector3[] dest;
     GameObject[] interactables;
@@ -33,7 +33,7 @@ public class NewPlayerController : MonoBehaviour
     float noInputTime = 0;
 
     bool entered = false;
-
+    
     public static float actTime;
     public GameObject coolDown;
     public static float coolDownFill;
@@ -53,11 +53,14 @@ public class NewPlayerController : MonoBehaviour
         SMN = 100;
         Health = 100;
         actionDone = false;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        CharacterSpeed();
         //at the beginning of the game
         if (!GameManage.gameStarted)
         {
@@ -66,7 +69,10 @@ public class NewPlayerController : MonoBehaviour
             if (auto && !findingRoute && !MentalBarController.belowHalf && !actionDone)
             {
                 StartCoroutine(FindRoute());
+                
             }
+
+            
         }
 
         coolDownFill = Mathf.Clamp(coolDownFill, 0, 1);
@@ -155,6 +161,20 @@ public class NewPlayerController : MonoBehaviour
         }
         
     }
+
+    public void CharacterSpeed()
+    {
+        if (MentalBarController.belowHalf)
+        {
+            myAgent.speed = 2f;
+        }
+
+        if (MentalBarController.belowQuater)
+        {
+            myAgent.speed = 1f;
+        }
+    }
+
     IEnumerator FindRoute()
     {
         //Debug.Log("findroute");
