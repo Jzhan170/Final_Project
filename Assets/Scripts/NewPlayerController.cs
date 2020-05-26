@@ -120,6 +120,7 @@ public class NewPlayerController : MonoBehaviour
             if (Physics.Raycast(myRay, out hitInfo, 100, InteractLayer))
             {
                 //go to the position of the child (usually the front of the object)
+                Debug.Log(hitInfo.transform.name);
                 myAgent.SetDestination(hitInfo.transform.GetChild(0).position);
             }
         }else if (transform.position == myAgent.destination && actionDone || entered && actionDone)
