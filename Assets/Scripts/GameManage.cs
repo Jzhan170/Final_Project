@@ -10,11 +10,13 @@ public class GameManage : MonoBehaviour
     public GameObject Title, UI, Dialog;
     public GameObject mentalBar;
     public static bool dialog;
+    public static bool tutorial;
 
     // Start is called before the first frame update
     void Start()
     {
         gameStarted = false;
+        tutorial = true;
         Title.SetActive(true);
         UI.SetActive(false);
         Dialog.SetActive(false);
