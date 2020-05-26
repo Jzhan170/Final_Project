@@ -2613,7 +2613,7 @@ MonoBehaviour:
   intensedarkSounds: {fileID: 562185108}
   distort: {fileID: 1647267403}
   cameraShake: {fileID: 1034222214}
-  cameraShakeGap: 3
+  cameraShakeGap: 5
   oldLength: 0
   newLength: 0
 --- !u!4 &554621900
@@ -5538,7 +5538,6 @@ GameObject:
   - component: {fileID: 1204301087}
   - component: {fileID: 1204301086}
   - component: {fileID: 1204301091}
-  - component: {fileID: 1204301090}
   - component: {fileID: 1204301092}
   - component: {fileID: 1204301093}
   - component: {fileID: 1204301094}
@@ -5627,34 +5626,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1204301090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204301085}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee5f99ac589489408ac0af8a9167ffa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatCanBeClickedOn:
-    serializedVersion: 2
-    m_Bits: 256
-  FoodBar: {fileID: 1714629785}
-  startFood: 100
-  HungerPerSec: 1
-  foodrecoverAmount: 20
-  SMNBar: {fileID: 1798931492}
-  startSMN: 100
-  SMNLost: 25
-  SMNGainRest: 25
-  SMNGainEat: 10
-  HealthBar: {fileID: 1205782553}
-  startHealth: 100
-  HealthrecoverAmount: 10
-  BadHealth: 10
 --- !u!195 &1204301091
 NavMeshAgent:
   m_ObjectHideFlags: 0
