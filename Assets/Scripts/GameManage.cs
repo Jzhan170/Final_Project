@@ -11,13 +11,17 @@ public class GameManage : MonoBehaviour
 
     public GameObject Title, UI, Dialog, DialogManager;
     public GameObject mentalBar;
+    public GameObject fridge;
 
     float fadeInSpeed = .75f;
-    int finishedFadeIns;
+    int finishedFadeIns = 0;
+    public static Animator fridgeAnim;
+    bool doingTutorial;
 
     // Start is called before the first frame update
     void Start()
     {
+        doingTutorial = false;
         gameStarted = false;
         Title.SetActive(true);
         UI.SetActive(false);
@@ -32,6 +36,7 @@ public class GameManage : MonoBehaviour
                 t.GetComponent<CanvasGroup>().alpha = 0;
             }
         }
+        fridgeAnim = fridge.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -56,42 +61,38 @@ public class GameManage : MonoBehaviour
                 Dialog.SetActive(false);
                 DialogManager.SetActive(false);
                 UI.SetActive(true);
+                fridgeAnim.SetBool("flash", true);
             }
-            
+            //Debug.Log("didTutorial, " + DataHolder.didTutorial);
             if (!DataHolder.didTutorial)
             {
-                Tutorial();
+                if (UI.transform.Find("foodBG").gameObject.GetComponent<CanvasGroup>().alpha != 1)
+                {
+                    FadeIn("foodBG");
+                }
             }
-            else
+            if(DataHolder.didTutorial)
             {
                 gameStarted = true;
+                if (UI.transform.Find("EntertainmentBG").gameObject.GetComponent<CanvasGroup>().alpha != 1)
+                {
+                    FadeIn("EntertainmentBG");
+                }
+                if (UI.transform.Find("RestBG").gameObject.GetComponent<CanvasGroup>().alpha != 1)
+                {
+                    FadeIn("RestBG");
+                }
+                if (UI.transform.Find("MentalBG").gameObject.GetComponent<CanvasGroup>().alpha != 1)
+                {
+                    FadeIn("MentalBG");
+                }
             }
         }
         UI.GetComponent<CanvasGroup>().alpha = mentalBar.GetComponent<Image>().fillAmount;
     }
-
-    void Tutorial()
-    {
-        Debug.Log("doing tutorial");
-
-        //only display hunger bar
-        FadeIn("foodBG");
-
-        //highlight the fridge in some way
-
-        //if player finished eating there, fade in other bars
-        FadeIn("EntertainmentBG");
-        FadeIn("RestBG");
-        FadeIn("MentalBG");
-
-        //if all four canvas groups' alpha = 1, say tutorial is finished
-        if (finishedFadeIns == 4)
-        {
-            DataHolder.didTutorial = true;
-        }    
-    }
     void FadeIn(string name)
     {
+        Debug.Log("function called");
         GameObject go = UI.transform.Find(name).gameObject;
         if (go.GetComponent<CanvasGroup>().alpha < 1)
         {
@@ -100,7 +101,6 @@ public class GameManage : MonoBehaviour
         else
         {
             go.GetComponent<CanvasGroup>().alpha = 1;
-            finishedFadeIns += 1;
             return;
         }
     }

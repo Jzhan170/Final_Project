@@ -17,6 +17,8 @@ public class InteractableController : MonoBehaviour
 
     public GameObject hoverIcon;
 
+    public bool InTutorial;
+
     bool actionStart;
 
     // Start is called before the first frame update
@@ -40,6 +42,9 @@ public class InteractableController : MonoBehaviour
             NewPlayerController.actTime = 0;
             actionStart = false;
             NewPlayerController.actionDone = true;
+            Debug.Log("set true");
+            DataHolder.didTutorial = true;
+            GameManage.gameStarted = true;
             NewPlayerController.Food += hunger;
             NewPlayerController.SMN += stamina;
             NewPlayerController.Health += health;
@@ -53,29 +58,56 @@ public class InteractableController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && GameManage.gameStarted)
+        if (other.CompareTag("Player"))
         {
-            NewPlayerController.actTime = 0;
-            actionStart = true;
-            NewPlayerController.actionDone = false;
-            NewPlayerController.coolDownFill = 0;
+            if (InTutorial && GameManage.dialogFinished)
+            {
+                NewPlayerController.actTime = 0;
+                actionStart = true;
+                NewPlayerController.actionDone = false;
+                NewPlayerController.coolDownFill = 0;
+                GameManage.fridgeAnim.SetBool("flash", false);
+                Debug.Log("set false");
+            }
+            if(!InTutorial && GameManage.gameStarted)
+            {
+                NewPlayerController.actTime = 0;
+                actionStart = true;
+                NewPlayerController.actionDone = false;
+                NewPlayerController.coolDownFill = 0;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && GameManage.gameStarted)
+        if (other.CompareTag("Player"))
         {
-            actionStart = false;
-            NewPlayerController.actTime = 0;
-            NewPlayerController.actionDone = false;
-            NewPlayerController.coolDownFill = 0;
+            if(InTutorial && GameManage.dialogFinished)
+            {
+                actionStart = false;
+                NewPlayerController.actTime = 0;
+                NewPlayerController.actionDone = false;
+                NewPlayerController.coolDownFill = 0;
+                if (!DataHolder.didTutorial)
+                {
+                    GameManage.fridgeAnim.SetBool("flash", true);
+                    Debug.Log("set true");
+                }
+            }
+            if (!InTutorial && GameManage.gameStarted)
+            {
+                actionStart = false;
+                NewPlayerController.actTime = 0;
+                NewPlayerController.actionDone = false;
+                NewPlayerController.coolDownFill = 0;
+            }
         }
     }
 
     private void OnMouseEnter()
     {
-        if (GameManage.gameStarted)
+        if (GameManage.dialogFinished)
         {
             Cursor.visible = false;
             hoverIcon.SetActive(true);
@@ -84,7 +116,7 @@ public class InteractableController : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (GameManage.gameStarted)
+        if (GameManage.dialogFinished)
         {
             Cursor.visible = true;
             hoverIcon.SetActive(false);

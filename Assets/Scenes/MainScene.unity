@@ -816,6 +816,7 @@ MonoBehaviour:
   mental: 10
   actionTime: 6
   hoverIcon: {fileID: 1299752670}
+  InTutorial: 0
 --- !u!54 &105588142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2009,7 +2010,7 @@ PrefabInstance:
     - target: {fileID: 2834051129320016715, guid: a98181fda595147dfbae74006df87096,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.67433
+      value: -9.16
       objectReference: {fileID: 0}
     - target: {fileID: 2834051129320016715, guid: a98181fda595147dfbae74006df87096,
         type: 3}
@@ -2064,7 +2065,7 @@ PrefabInstance:
     - target: {fileID: 2834051129320016715, guid: a98181fda595147dfbae74006df87096,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.439416
+      value: 4.232672
       objectReference: {fileID: 0}
     - target: {fileID: 2834051129320016715, guid: a98181fda595147dfbae74006df87096,
         type: 3}
@@ -2688,6 +2689,7 @@ MonoBehaviour:
   Dialog: {fileID: 1897419747}
   DialogManager: {fileID: 1597568911}
   mentalBar: {fileID: 1796384960}
+  fridge: {fileID: 1825281123}
 --- !u!114 &554621904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4138,6 +4140,7 @@ MonoBehaviour:
   mental: 0
   actionTime: 12
   hoverIcon: {fileID: 955610331}
+  InTutorial: 0
 --- !u!1 &931657285
 GameObject:
   m_ObjectHideFlags: 0
@@ -6253,6 +6256,7 @@ MonoBehaviour:
   mental: 0
   actionTime: 8
   hoverIcon: {fileID: 1299752670}
+  InTutorial: 0
 --- !u!54 &1272430886
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6734,6 +6738,7 @@ MonoBehaviour:
   mental: 0
   actionTime: 3
   hoverIcon: {fileID: 304912565}
+  InTutorial: 1
 --- !u!1 &1329785100
 GameObject:
   m_ObjectHideFlags: 0
@@ -7912,6 +7917,7 @@ MonoBehaviour:
   mental: 0
   actionTime: 10
   hoverIcon: {fileID: 1299752670}
+  InTutorial: 0
 --- !u!1 &1634831901
 GameObject:
   m_ObjectHideFlags: 0
@@ -8050,7 +8056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1647267404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8914,7 +8920,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.85
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -9620,6 +9626,31 @@ Transform:
   m_Father: {fileID: 1329785101}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1825281123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4684729924890926277, guid: a98181fda595147dfbae74006df87096,
+    type: 3}
+  m_PrefabInstance: {fileID: 364412448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1825281125
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825281123}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb5f1c13e48fb4840a54aafa95b47add, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1836094188
 GameObject:
   m_ObjectHideFlags: 0

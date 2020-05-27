@@ -49,7 +49,15 @@ public class NewPlayerController : MonoBehaviour
             dest[i] = interactables[i].transform.GetChild(0).position;
         }
         myAgent = GetComponent<NavMeshAgent>();
-        Food = 100;
+        if (DataHolder.didTutorial)
+        {
+            Food = 100;
+        }
+        else
+        {
+            Food = FoodBar.fillAmount * 100;
+        }
+        
         SMN = 100;
         Health = 100;
         actionDone = false;
@@ -62,14 +70,14 @@ public class NewPlayerController : MonoBehaviour
     {
         CharacterSpeed();
         //at the beginning of the game
-        if (!GameManage.gameStarted)
+        if (!GameManage.gameStarted && !GameManage.dialogFinished && !GameManage.dialog)
         {
+            Debug.Log("called");
             noInputTime += Time.deltaTime * 2;
             //Debug.Log(noInputTime);
             if (auto && !findingRoute && !MentalBarController.belowHalf && !actionDone)
             {
                 StartCoroutine(FindRoute());
-                
             }
 
             
@@ -105,7 +113,7 @@ public class NewPlayerController : MonoBehaviour
         #endregion
 
         #region Manual Route Finding
-        if (Input.GetMouseButtonDown(0) && GameManage.gameStarted)
+        if (Input.GetMouseButtonDown(0) && GameManage.gameStarted || Input.GetMouseButtonDown(0) && GameManage.dialogFinished && !DataHolder.didTutorial)
         {
             auto = false;
             noInputTime = 0;
@@ -136,7 +144,7 @@ public class NewPlayerController : MonoBehaviour
         }
         #endregion
 
-        if (GameManage.gameStarted)
+        if (GameManage.gameStarted || GameManage.dialogFinished && !DataHolder.didTutorial)
         {
             Food -= Time.deltaTime * HungerPerSec;
             //FoodBar.fillAmount = Food / 100;

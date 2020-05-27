@@ -12,7 +12,7 @@ public class ClickIndication : MonoBehaviour
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (GameManage.gameStarted)
+        if (GameManage.dialogFinished)
         {
             if(Physics.Raycast(ray, out hit, raycastLength))
             {
