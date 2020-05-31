@@ -812,8 +812,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hunger: -15
   stamina: 10
-  health: -20
-  mental: 10
+  health: -10
+  mental: 5
   actionTime: 6
   hoverIcon: {fileID: 1299752670}
   InTutorial: 0
@@ -3236,7 +3236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ad22e52bf77a04586a10cd008c5fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Marker: {fileID: 7597178327052042543, guid: f4c79b99ae9486845b4cb15970bac64d, type: 3}
+  Marker: {fileID: 7472127742154651523, guid: 07edb15dd175649958eb470640325681, type: 3}
 --- !u!4 &682527734
 Transform:
   m_ObjectHideFlags: 0
@@ -4137,7 +4137,7 @@ MonoBehaviour:
   hunger: 0
   stamina: -10
   health: 25
-  mental: 0
+  mental: 15
   actionTime: 12
   hoverIcon: {fileID: 955610331}
   InTutorial: 0
@@ -6253,7 +6253,7 @@ MonoBehaviour:
   hunger: -5
   stamina: 15
   health: -10
-  mental: 0
+  mental: 10
   actionTime: 8
   hoverIcon: {fileID: 1299752670}
   InTutorial: 0
@@ -6732,7 +6732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fef52452eb754c44bbb2dcee7b2bb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 20
+  hunger: 25
   stamina: -10
   health: -10
   mental: 0
@@ -8056,7 +8056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1647267404
 MonoBehaviour:
   m_ObjectHideFlags: 0

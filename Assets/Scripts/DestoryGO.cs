@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestoryGO : MonoBehaviour
 {
-    public float lifetime = .2f;
+    public float lifetime;
 
     void Start()
     {

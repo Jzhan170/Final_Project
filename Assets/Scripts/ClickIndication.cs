@@ -16,17 +16,17 @@ public class ClickIndication : MonoBehaviour
         {
             if(Physics.Raycast(ray, out hit, raycastLength))
             {
-                //if (hit.collider.name == "floor")
-                //{
+                if (hit.collider.name == "floor")
+                {
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
 
-
-                        GameObject TargetMarker = Instantiate(Marker, hit.point, Quaternion.identity) as GameObject;
+                        
+                        GameObject TargetMarker = Instantiate(Marker, hit.point, Quaternion.Euler(90,0,0)) as GameObject;
 
 
                     }
-                //}
+                }
             }
         }
         
